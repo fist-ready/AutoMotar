@@ -1,0 +1,8 @@
+/build/
+/bin/
+/docs/
+/refer_repo/
+/*.bmp
+/*.png
+/.vs/
+*.user

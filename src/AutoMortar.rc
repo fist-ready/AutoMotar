@@ -1,0 +1,58 @@
+#include <windows.h>
+#include "resource.h"
+#pragma code_page(65001)
+IDD_SETTINGS DIALOGEX 0, 0, 316, 278
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "AutoMortar 设置"
+FONT 9, "Microsoft YaHei UI"
+BEGIN
+    LTEXT "标定线段长度（米）", -1, 12, 16, 124, 12
+    EDITTEXT IDC_REFERENCE, 147, 13, 125, 16, ES_AUTOHSCROLL
+    LTEXT "游戏进程名", -1, 12, 43, 124, 12
+    EDITTEXT IDC_TARGET, 147, 40, 125, 16, ES_AUTOHSCROLL
+    LTEXT "面板左上角 X / Y（客户区像素）", -1, 12, 70, 260, 12
+    EDITTEXT IDC_PANEL_X, 147, 87, 57, 16, ES_NUMBER
+    EDITTEXT IDC_PANEL_Y, 215, 87, 57, 16, ES_NUMBER
+    GROUPBOX "菜单外观", -1, 10, 113, 294, 95
+    LTEXT "正文字号（9–28）", -1, 20, 132, 110, 12
+    EDITTEXT IDC_FONT_SIZE, 147, 129, 125, 16, ES_NUMBER
+    LTEXT "距离字号（16–64）", -1, 20, 151, 110, 12
+    EDITTEXT IDC_DISTANCE_SIZE, 147, 148, 125, 16, ES_NUMBER
+    LTEXT "额外行距（0–16）", -1, 20, 170, 110, 12
+    EDITTEXT IDC_LINE_GAP, 147, 167, 125, 16, ES_NUMBER
+    LTEXT "菜单宽度（220–800）", -1, 20, 189, 120, 12
+    EDITTEXT IDC_PANEL_WIDTH, 147, 186, 125, 16, ES_NUMBER
+    LTEXT "菜单高度随文字和行距自动适配。关闭地图 3 秒后隐藏。\n100m 是一格；跨 5 格可将标定线段长度填为 500。", -1, 12, 215, 292, 28
+    DEFPUSHBUTTON "保存", IDOK, 184, 251, 55, 17
+    PUSHBUTTON "取消", IDCANCEL, 247, 251, 55, 17
+END
+
+IDD_HOME DIALOGEX 0, 0, 420, 336
+STYLE DS_SETFONT | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX
+CAPTION "AutoMortar · 地图测距助手"
+FONT 9, "Microsoft YaHei UI"
+BEGIN
+    LTEXT "AutoMortar", IDC_HOME_TITLE, 18, 13, 260, 26
+    LTEXT "地图上取两点，快速读取水平距离。", -1, 19, 44, 382, 14
+    GROUPBOX "运行状态", -1, 16, 67, 388, 53
+    LTEXT "正在准备…", IDC_HOME_STATUS, 27, 83, 367, 29
+    PUSHBUTTON "选择本局地图…", IDC_HOME_MAP, 18, 132, 120, 23
+    PUSHBUTTON "菜单外观与设置…", IDC_HOME_SETTINGS, 148, 132, 134, 23
+    GROUPBOX "快速开始", -1, 16, 167, 388, 111
+    LTEXT "1. 游戏使用无边框窗口模式。每局按 F5 选地图，确认最小缩放。\n2. 按 M 打开地图；若测距状态不同步，按 F8 校正。\n3. 当前档未标定时按 F6，Alt+右键选择已知网格线的两端。\n4. Alt+右键先点自己、再点目标，读取距离。\n5. 关地图后菜单显示 3 秒再隐藏，测距结果仍保留。\n\nF7 选地图区域  ·  F9 清除结果  ·  F10 复位到最小缩放档", -1, 27, 183, 367, 84
+    LTEXT "关闭此窗口后仍在托盘运行；双击托盘图标可重新打开。", -1, 18, 285, 384, 14
+    DEFPUSHBUTTON "收起到托盘", IDC_HOME_HIDE, 214, 307, 90, 20
+    PUSHBUTTON "退出程序", IDC_HOME_EXIT, 314, 307, 88, 20
+END
+
+IDD_MAP DIALOGEX 0, 0, 304, 145
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "选择本局地图"
+FONT 9, "Microsoft YaHei UI"
+BEGIN
+    LTEXT "地图场景", -1, 12, 15, 72, 12
+    COMBOBOX IDC_MAP, 88, 12, 202, 160, CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    LTEXT "确认后开始新一局：缩放复位为 0 档，清除上次距离。\n已标定的 0–4 档比例尺会自动载入。\n请确保游戏地图处于最小缩放；若地图已经打开，\n确认后按 F8 启用。", -1, 12, 44, 279, 54
+    DEFPUSHBUTTON "开始本局", IDOK, 164, 118, 62, 17
+    PUSHBUTTON "取消", IDCANCEL, 233, 118, 57, 17
+END
